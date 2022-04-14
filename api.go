@@ -13,7 +13,7 @@ const (
 func GetCoordinatesFromAddress(address string) (*Geo, error) {
 	uri := url.QueryEscape(address)
 	endpoint := baseEndpoint + uri
-	finalEndpoint := endpoint + "&key=AIzaSyAutJabWt9acnFnpqw6CYpsz25AE9ttgWw"
+	finalEndpoint := endpoint + *key
 
 	x, err := http.Get(finalEndpoint)
 	if err != nil {

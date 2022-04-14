@@ -3,9 +3,18 @@ package main
 import (
 	"bufio"
 	"errors"
+	"flag"
 	"fmt"
 	"os"
 	"strings"
+)
+
+func init() {
+	flag.Parse()
+}
+
+var(
+	key = flag.String("key", "", "apikey")
 )
 
 func main() {
@@ -38,7 +47,7 @@ func main() {
 	}
 
 	if len(geo1.Results) == 0 || len(geo2.Results) == 0 {
-		panic(errors.New("One of the address (or both of them) was not found"))
+		panic(errors.New("one of the address (or both of them) was not found"))
 	}
 
 	mi, km := EuclidianDistance(geo1.Results[0].Geometry.Location, geo2.Results[0].Geometry.Location)
